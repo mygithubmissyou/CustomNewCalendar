@@ -39,6 +39,10 @@ public class NewCalendar extends LinearLayout {
         renderCalendar();
     }
 
+    /**
+     * 初始化布局
+     * @param context
+     */
     private void initData(Context context) {
         inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.canlendar_new, this, true);
@@ -63,6 +67,9 @@ public class NewCalendar extends LinearLayout {
         });
     }
 
+    /**
+     * 渲染布局
+     */
     private void renderCalendar() {
 
         tvDateCenter.setText(calendar.get(Calendar.YEAR) + "年" + (calendar.get(Calendar.MONTH) + 1) + "月");
@@ -80,6 +87,10 @@ public class NewCalendar extends LinearLayout {
         gridView.setAdapter(dateAdapter);
     }
 
+    /**
+     * 计算天数
+     * @return
+     */
     private int countShowDays() {
         Calendar calendarNew = (Calendar) calendar.clone();
         int thisMonthDays = calendarNew.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -88,6 +99,9 @@ public class NewCalendar extends LinearLayout {
         return lastDays+thisMonthDays;
     }
 
+    /**
+     * GridView适配器
+     */
     private class DateAdapter extends BaseAdapter {
 
         private final ArrayList<Date> mList;
